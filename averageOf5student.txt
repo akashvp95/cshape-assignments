@@ -1,0 +1,38 @@
+class program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter 5 average number");
+        int n1 = Convert.ToInt16(Console.ReadLine());
+        int n2 = Convert.ToInt16(Console.ReadLine());
+        int n3 = Convert.ToInt16(Console.ReadLine());
+        int n4 = Convert.ToInt16(Console.ReadLine());
+        int n5 = Convert.ToInt16(Console.ReadLine());
+        //Console.WriteLine(n1);
+
+        if(n1>n2 && n1>n3 && n1>n4 && n1>n5)
+        {
+            Console.WriteLine("1st student average is highest");
+        }
+        else if(n2>n1 && n2>n3 && n2>n4 && n2>n5)
+        {
+            Console.WriteLine("2nd student average is highest");
+        }
+        else if (n3>n1 && n3>n2 && n3>n4 && n3>n5)
+        {
+            Console.WriteLine("3rd student average is highest");
+        }
+        else if (n4> n1 && n4 > n2 && n4 > n2 && n4 > n5)
+        {
+            Console.WriteLine("4th student average ishighest");
+        }
+        else if (n5 > n1 && n5 > n2 && n5 > n3 && n5 > n4)
+        {
+            Console.WriteLine("5th student average is highest");
+        }
+        else
+        {
+            Console.WriteLine("Its not highest");
+        }
+    }
+}
