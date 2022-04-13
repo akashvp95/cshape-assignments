@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CalculateAreaOfCircle
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            float pi = 3.14f;
+            Program p = new Program();
+
+            Console.WriteLine("Enter the Radius");
+            int num= Convert.ToInt32(Console.ReadLine()); ;
+            CircleAreaCircumference(num);
+            //CircleCircumference(num);
+
+            void CircleAreaCircumference(int r)
+            {
+                Console.WriteLine("Area of Cirle = "+ pi * r * r);
+                Console.WriteLine("Circumferenece of Cirle = " + 2 * pi * r);
+            }
+
+        }
+    }
+}
