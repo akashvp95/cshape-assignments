@@ -1,0 +1,46 @@
+using System;
+using System.IO;
+
+namespace FileRead
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string file = @"C:\sample\demo.txt";
+
+            Console.WriteLine("Reading File using File.ReadAllText()");
+
+            // To read the entire file at once
+            if (File.Exists(file))
+            {
+                // Read all the content in one string
+                // and display the string
+                string str = File.ReadAllText(file);
+                Console.WriteLine(str);
+            }
+            Console.WriteLine();
+
+            DirectoryInfo di = new DirectoryInfo(@"c:\Sample");
+                // checking for files and displaying all files
+                if (di.Exists)
+                {
+                    foreach(FileInfo fi in di.GetFiles())
+                    {
+                        Console.WriteLine(fi.Name);
+                    }
+                }
+
+                // to get all subdirectories
+                string root = @"C:\sample";
+                // Get all subdirectories  
+                string[] subdirectoryEntries = Directory.GetDirectories(root);
+                // Loop through them to see if they have any other subdirectories  
+                foreach (string subdirectory in subdirectoryEntries)
+                {
+                    Console.WriteLine(subdirectory);
+                }
+        }             
+    }
+}
+

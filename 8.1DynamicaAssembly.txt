@@ -1,0 +1,54 @@
+using System;
+using System.Reflection;
+using System.Reflection;
+
+
+namespace Reflection
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Type T = Type.GetType("Reflection.Customer");
+            //Type T = typeof(Customer); // for typeof function pass classname as argument
+            Customer C1 = new Customer(1,"akash");// using typeof on class
+            Type T = C1.GetType();
+            Console.WriteLine("Full Name = {0}",T.FullName);
+            Console.WriteLine("Name = {0}", T.Name);
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Properties in Customer");
+            PropertyInfo[] properties = T.GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                Console.WriteLine(property.PropertyType.Name + " " +property.Name);
+            }
+
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Methods in Customer");
+            MethodInfo[] methods = T.GetMethods();
+            foreach (MethodInfo method in methods)
+            {
+                Console.WriteLine(method.ReturnType.Name + " " + method.Name);
+            }
+        }
+    }
+
+
+    public class Customer
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+
+        public Customer(int ID, string Name)
+        {
+            this.ID = ID;
+            this.Name = Name;
+        }
+
+        public void PrintID()
+        {
+            Console.WriteLine("ID = {0}", this.ID);
+        }
+    }
+}

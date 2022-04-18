@@ -1,0 +1,57 @@
+using System;
+
+namespace assignnment
+{
+    //UniCast Delegate
+    public delegate void EmployeeDelegate();
+    public class UniCastDelegate
+    {
+
+        static void Main()
+        {
+            Employee employee = new Employee();
+
+            EmployeeDelegate employeeDelegate = new EmployeeDelegate(employee.Display);
+
+            employeeDelegate.Invoke();
+        }
+    }
+    public class Employee
+    {
+        public int EmpId;
+        public string EmpName;
+        public string CompanyName;
+        public string Designation;
+        public string WorkLocation;
+
+        public Employee()
+        {
+            Console.Write("Enter the Employee ID : ");
+            this.EmpId = (Convert.ToInt32(Console.ReadLine()));
+            Console.Write("Enter the Employee Name : ");
+            this.EmpName = Console.ReadLine();
+
+            Console.Write("Enter the Company Name : ");
+            this.CompanyName = Console.ReadLine();
+
+            Console.Write("Enter the Employee Designation : ");
+            this.Designation = Console.ReadLine();
+
+            Console.Write("Enter the Employee WorkLocation : ");
+            this.WorkLocation = Console.ReadLine();
+
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Employee Id : {0}", EmpId);
+            Console.WriteLine("Employee Name : {0}", EmpName);
+            Console.WriteLine("Employee Company Name : {0}", CompanyName);
+
+            Console.WriteLine("Employee Designation : {0}", Designation);
+
+            Console.WriteLine("Employee Work Location : {0}", WorkLocation);
+        }
+
+    }
+}
