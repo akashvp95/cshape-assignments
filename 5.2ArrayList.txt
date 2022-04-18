@@ -1,62 +1,41 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterviewQuestion
+namespace Assignment5
 {
-    class Program
+    class Employee
+    {
+        public int EmpId { get; set; }
+        public string EmpName { get; set; }
+        public int EmpSal { get; set; }
+        public string EmpLoc { get; set; }
+
+
+    }
+
+    class ArrayListSample
     {
         static void Main(string[] args)
         {
-            //object[] array = new object[3];
-            //array[0] = 1;
-            //array[1] = "akash";
+            //object initilizer or collection initilizer
+            //ArrayList e = new ArrayList();//non generic
 
-            //Console.Write(array[0]);
-            //Console.Write(array[1]);
-
-
-            System.Collections.ArrayList arraylist = new System.Collections.ArrayList();
-            arraylist.Add(101);
-            arraylist.Add("c#");
-
-            customer c = new customer();
-            c.ID = 99;
-            c.Name = "kiran";
-            arraylist.Add(c);
-
-            customer c1 = new customer();
-            c1.ID = 100;
-            c1.Name = "Akash";
-            arraylist.Add(c1);
-
-            foreach (object obh in arraylist)
+            ArrayList e = new ArrayList()
             {
-                Console.Write(obh);
-                Console.WriteLine("\n");
-            }
-                
-        }
-        class customer
-        {
-            public int ID
+                    new Employee{EmpId=1,EmpName="Akash",EmpSal=20000,EmpLoc="Ban"},
+                    new Employee{EmpId=2,EmpName="Rama",EmpSal=25000,EmpLoc="Hyd"},
+                    new Employee{EmpId=3,EmpName="Krishna",EmpSal=32000,EmpLoc="Che"},
+                    new Employee{EmpId=3,EmpName="Shiva",EmpSal=40000,EmpLoc="Hub"},
+                    new Employee{ EmpId=4, EmpName="Vignesh"},
+            };
+            foreach (Employee i in e)
             {
-                get;
-                set;
+                Console.WriteLine(i.EmpId + " " + i.EmpName + " " + i.EmpSal + " " + i.EmpLoc);
             }
-            public string Name
-            {
-                get;
-                set;
-            }
-
-            public override string ToString()
-            {
-                return this.Name;
-            }
-
         }
     }
 }
