@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace Serialization
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Manager person = new Manager() { FirstName = "akash", LastName = "VP" };
+            string filePath = "pract.save";
+            DataSerializer dataSerializer = new DataSerializer();
+            Manager p = null;
+
+            dataSerializer.BinarySerialize(person, filePath);
+
+            p = dataSerializer.BinaryDeserialize(filePath) as Manager;
+
+            Console.WriteLine(p.FirstName);
+            Console.WriteLine(p.LastName);
+
+            Console.ReadLine();
+        }
+    }
+
+    [Serializable]
+    public class Manager
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
+    //class wrapper to encapuslate serialization code
+
+    class DataSerializer
+    {
+        public void BinarySerialize(object data,string filePath)
+        {
+            FileStream filestream;
+            BinaryFormatter bf = new BinaryFormatter();
+            if (File.Exists(filePath)) File.Delete(filePath);
+            filestream = File.Create(filePath);
+            bf.Serialize(filestream, data);
+            filestream.Close();
+        }
+
+        public object BinaryDeserialize(string filePath)
+        {
+            object obj = null;
+            FileStream filestream;
+            BinaryFormatter bf = new BinaryFormatter();
+            if (File.Exists(filePath))
+            {
+                filestream = File.OpenRead(filePath);
+                obj = bf.Deserialize(filestream);
+                filestream.Close();
+            }
+            return obj;
+        }
+
+    }
+}
